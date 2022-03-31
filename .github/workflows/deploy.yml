@@ -36,6 +36,10 @@ jobs:
         kubectl create ns sonar
         helm upgrade --install postgres helm/postgres/ -f helm/postgres/values.yaml -n sonar
         helm upgrade --install app helm/app -f helm/app/values.yaml -n sonar
+    - name: Sleep for 30 seconds
+      uses: jakejarvis/wait-action@master
+      with:
+        time: '30s'
     - name: Test service URLs
       run: |
         kubectl get pods -A
