@@ -19,11 +19,13 @@ jobs:
         echo -n "verifying images:"
         docker images        
     - name: Deploy to minikube
-      run:
-        kubectl apply -f deploy-to-minikube.yaml
+      run: |
+        kubectl create ns sonar
+        helm upgrade install postgres postgres -f postgres/values.yaml -n sonar
+        helm upgrade install app app -f app/values.yaml -n sonar
     - name: Test service URLs
       run: |
         minikube service list
         minikube service example --url
         echo "------------------opening the service------------------"
-        curl $(minikube service example --url)        
+        # curl $(minikube service example --url)        
