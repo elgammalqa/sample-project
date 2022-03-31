@@ -38,7 +38,8 @@ jobs:
         helm upgrade --install app helm/app -f helm/app/values.yaml -n sonar
     - name: Test service URLs
       run: |
+        kubectl get pods -A
         minikube service list
         minikube service example --url
         echo "------------------opening the service------------------"
-        # curl $(minikube service example --url)        
+        curl $(minikube service example --url)        
