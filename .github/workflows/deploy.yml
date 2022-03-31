@@ -34,8 +34,8 @@ jobs:
     - name: Deploy to minikube
       run: |
         kubectl create ns sonar
-        helm upgrade --install postgres postgres -f postgres/values.yaml -n sonar
-        helm upgrade --install app app -f app/values.yaml -n sonar
+        helm upgrade --install postgres helm/postgres/ -f helm/postgres/values.yaml -n sonar
+        helm upgrade --install app helm/app -f helm/app/values.yaml -n sonar
     - name: Test service URLs
       run: |
         minikube service list
