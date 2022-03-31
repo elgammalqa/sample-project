@@ -50,17 +50,17 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: postgres-config
-                key: postgres_user
+                key: postgres-user
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: postgres-secret
-                key: postgres_password
+                key: postgres-password
           - name: POSTGRES_HOST
             valueFrom:
               configMapKeyRef:
                 name: hostname-config
-                key: postgres_host
+                key: postgres-host
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}

@@ -4,5 +4,5 @@ metadata:
   name: postgres-config 
 data:
   database: k8s
-  postgres_host: postgres
-  postgres_user: postgres
+  postgres-host: postgres
+  postgres-user: postgres
