@@ -45,7 +45,7 @@ spec:
             httpGet:
               path: /
               port: http
-                  env:
+          env:
           - name: POSTGRES_USERNAME
             valueFrom:
               configMapKeyRef:
