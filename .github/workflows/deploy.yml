@@ -1,6 +1,8 @@
 name: CI
 on:
   - push
+env:
+  IMAGE_NAME: sample-project
 jobs:
   job1:
     runs-on: ubuntu-latest
@@ -14,7 +16,7 @@ jobs:
     - name: Log in to registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
     - name: Build image
-      run: docker build . --file Dockerfile --tag $IMAGE_NAME
+      run: docker build . --file Dockerfile --tag $IMAGE_NAME  
     - name: Push image
       run: |
         IMAGE_ID=ghcr.io/elgammalqa/$IMAGE_NAME
